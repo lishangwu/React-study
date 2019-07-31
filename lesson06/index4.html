@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .title {
+            font-size: 20px;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Toggle extends React.Component{
+            constructor(props) {
+                super(props);
+                this.state = {isToggleOn: false}
+            }
+
+            handleClick () {
+                this.setState(state => {
+                    isToggleOn: !state.isToggleOn
+                })
+                console.log('4 this is : ', this);
+            }
+
+            /**
+            *  此语法问题在于每次渲染 LoggingButton 时都会创建不同的回调函数。
+            * 在大多数情况下，这没什么问题，但如果该回调函数作为 prop 传入子组件时，
+            * 这些组件可能会进行额外的重新渲染。
+            * 我们通常建议在构造器中绑定或使用 class fields 语法来避免这类性能问题。
+            */
+            render(){
+                //// 此语法确保 `handleClick` 内的 `this` 已被绑定。
+                return (
+                    <button onClick={(e) => this.handleClick(e)}>{this.state.isToggleOn ? 'On' : 'Off'}</button>
+                )
+            }
+            
+        }
+
+        ReactDOM.render(
+            <Toggle />,
+            document.getElementById('root')
+        )
+
+    </script>
+
+
+</body>
+
+</html>
