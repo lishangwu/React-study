@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+
+
+    <script type="text/babel">
+        class App extends React.Component{
+            constructor(props) {
+                super(props);
+                this.state = {
+                    todos:['A','B','C']
+                }
+                this.add = this.add.bind(this)
+            }
+            add(todo){
+                const {todos} = this.state 
+                todos.unshift(todo)
+                this.setState({todos})
+            }  
+            render(){
+                const {todos} = this.state
+                return (
+                    <div>
+                        <h1>Simple..</h1>  
+                        <Add count={todos.length} add={this.add}/>
+                        <List todos={todos}/>  
+                    </div>
+                )
+            }
+        }
+        class List extends React.Component{
+            constructor(props) {
+                super(props);
+            }  
+            render(){
+                const {todos} = this.props
+                return (
+                    <ul>
+                        {todos.map((todo, index)=> <li key={index}>{todo}</li> )}
+                    </ul>
+                )
+            }
+        }
+        class Add extends React.Component{
+            constructor(props) {
+                super(props);
+                this.handleClick = this.handleClick.bind(this)
+            }
+            handleClick(){
+                const todo = this.input.value.trim()
+                if(!todo){return}
+                this.props.add(this.input.value)
+                this.input.value = ''
+            }
+            render(){
+                return (
+                    <div>
+                        <input type="text" ref={input=>this.input = input}/>
+                         <button onClick={this.handleClick}>add #{this.props.count+1}</button>
+                    </div>
+                )
+            }
+        }
+        
+        ReactDOM.render(
+            <App />
+            , document.getElementById('app'));
+
+    
+    </script>
+
+</body>
+
+</html>
