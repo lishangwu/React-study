@@ -65,9 +65,9 @@ const resolveModule = (resolveFn, filePath) => {
   return resolveFn(`${filePath}.js`);
 };
 
-let srcPath = 'src'
+let srcPath = process.env.srcpath || 'src'
 
-srcPath = 'src2'
+console.log('srcPath: ', srcPath)
 
 // config after eject: we're in ./config/
 module.exports = {
