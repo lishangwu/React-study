@@ -65,7 +65,7 @@ const resolveModule = (resolveFn, filePath) => {
   return resolveFn(`${filePath}.js`);
 };
 
-let srcPath = process.env.srcpath || 'src'
+let srcPath = process.env.src || 'src'
 
 console.log('srcPath: ', srcPath)
 
