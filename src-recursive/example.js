@@ -7,7 +7,7 @@ import {
     Redirect,
     useParams,
     useRouteMatch
-} from "react-router-dom";
+} from 'react-router-dom';
 
 export default function RecursiveExample(){
     return(
@@ -26,8 +26,8 @@ export default function RecursiveExample(){
 
 function Person(){
 
-    let {url} = useRouteMatch()
-    let {id} = useParams()
+    let { url } = useRouteMatch()
+    let { id } = useParams()
     let person = find(id*1)
 
     return(
@@ -54,13 +54,13 @@ function Person(){
 
 
 const PEEPS = [
-    { id: 0, name: "Michelle", friends: [1, 2, 3] },
-    { id: 1, name: "Sean", friends: [0, 3] },
-    { id: 2, name: "Kim", friends: [0, 1, 3] },
-    { id: 3, name: "David", friends: [1, 2] }
-  ];
+    { id: 0, name: 'Michelle', friends: [1, 2, 3] },
+    { id: 1, name: 'Sean', friends: [0, 3] },
+    { id: 2, name: 'Kim', friends: [0, 1, 3] },
+    { id: 3, name: 'David', friends: [1, 2] }
+]
   
   function find(id) {
-    return PEEPS.find(p => p.id === id);
+    return PEEPS.find(p => p.id === id)
   }
   

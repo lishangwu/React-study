@@ -1,13 +1,15 @@
-import React, {Component} from 'react'
-import {INCREMENT, DECREMENT} from '../redux/action-types'
+import React, { Component } from 'react'
+import { INCREMENT, DECREMENT } from '../redux/action-types'
 
 import * as actions from '../redux/action'
 
-export default class App extends Component{
+import { connect } from 'react-redux'
+
+class App extends Component{
     constructor(props) {
-        super(props);
+        super(props)
         this.state={
-            count:2
+            count: 2
         }
     }
     increment = ()=>{
@@ -22,14 +24,14 @@ export default class App extends Component{
         const number = this.select.value*1
         // const count = this.state.count
         // this.setState({count:count-number})
-        this.props.store.dispatch({type:DECREMENT, data: number})
+        this.props.store.dispatch({ type: DECREMENT, data: number })
     }
     incrementIfOdd = ()=>{
         const number = this.select.value*1
         const count = this.state.count
         if(count%2 === 1){
             // this.setState({count:count+number})
-            this.props.store.dispatch({type:INCREMENT, data: number})
+            this.props.store.dispatch({ type: INCREMENT, data: number })
         }
     }
     incrementAsync = ()=>{
@@ -37,8 +39,8 @@ export default class App extends Component{
         // const count = this.state.count
         setTimeout(()=>{
             // this.setState({count:count+number})
-            this.props.store.dispatch({type:INCREMENT, data: number})
-        },1000)
+            this.props.store.dispatch({ type: INCREMENT, data: number })
+        }, 1000)
     }
     render(){
         // const {count} = this.state
@@ -61,3 +63,5 @@ export default class App extends Component{
     }
     
 }
+
+export default connect()(App) 

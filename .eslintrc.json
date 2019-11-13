@@ -1,0 +1,28 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "es6": true,
+        "commonjs": true,
+        "node": true
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "quotes": [
+            "error",
+            "single",
+            {
+              "allowTemplateLiterals": true
+            }
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        //强制在花括号中使用一致的空格
+        "object-curly-spacing": ["error", "always"],
+        //强制在逗号周围使用空格
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        //强制在对象字面量的键和值之间使用一致的空格
+        "key-spacing": ["error", { "afterColon": true }]
+    }
+}
