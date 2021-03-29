@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/history/4.7.2/history.js"></script>
+</head>
+
+<body>
+    <a href="http://www.baidu.com" onclick="return push('/test1')">baidu yi xia</a>
+
+    <script>
+        // let history = History.createBrowserHistory() // 直接使用H5推出的history的API
+        let history = History.createHashHistory() // 锚点，兼容性好
+        function push(path) {
+            history.push(path)
+            return false
+        }
+        history.listen((location) => {
+            console.log(location)
+        })
+
+    </script>
+</body>
+
+</html>
